@@ -63,37 +63,6 @@ const MentorProfile = () => {
     }
   ];
 
-  const activityLogs = [
-    {
-      id: 1,
-      action: "Completed session with Alex",
-      time: "2 hours ago",
-      icon: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=24&h=24&fit=crop&crop=face",
-      type: "session"
-    },
-    {
-      id: 2,
-      action: "Updated portfolio review",
-      time: "5 hours ago",
-      icon: "📝",
-      type: "update"
-    },
-    {
-      id: 3,
-      action: "New 5-star review received",
-      time: "1 day ago",
-      icon: "⭐",
-      type: "review"
-    },
-    {
-      id: 4,
-      action: "Added new expertise: Figma",
-      time: "2 days ago",
-      icon: "🎨",
-      type: "skill"
-    }
-  ];
-
   const handleBookSession = () => {
     console.log('Booking session:', { date: selectedSession, time: selectedTimeSlot });
     toast({
@@ -119,7 +88,7 @@ const MentorProfile = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 relative">
-      {/* Fixed Top Icons */}
+      {/* Fixed Top Icons - Using position fixed instead of absolute */}
       <div className="fixed top-4 right-4 z-50 flex gap-3">
         <div className="bg-white p-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
           <Bell className="w-5 h-5 text-gray-600 hover:text-violet-600" />
@@ -235,35 +204,9 @@ const MentorProfile = () => {
       {/* Main Content Grid - Equal Width */}
       <div className="px-6 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Column - Main Content */}
+          {/* Left Column - Overview, Background, Reviews */}
           <div className="space-y-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Mentor Profile</h2>
-
-            {/* Activity Logs */}
-            <section className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-lg font-semibold text-violet-600 border-b-2 border-violet-600 pb-2 mb-4">Recent Activity</h3>
-              <div className="space-y-3">
-                {activityLogs.map((log) => (
-                  <div key={log.id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-violet-50">
-                    <div className="flex-shrink-0">
-                      {typeof log.icon === 'string' && log.icon.startsWith('http') ? (
-                        <img 
-                          src={log.icon} 
-                          alt="Activity" 
-                          className="w-6 h-6 rounded-full border border-gray-200"
-                        />
-                      ) : (
-                        <span className="text-lg">{log.icon}</span>
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-800">{log.action}</p>
-                      <p className="text-xs text-gray-500">{log.time}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
 
             {/* Overview */}
             <section className="bg-white rounded-xl shadow-lg p-6">
@@ -345,7 +288,7 @@ const MentorProfile = () => {
             </section>
           </div>
 
-          {/* Right Column - Equal Width */}
+          {/* Right Column - Available Sessions and Similar Profiles */}
           <div className="space-y-6">
             {/* Available Sessions */}
             <section className="bg-white rounded-xl shadow-lg p-6">
@@ -396,25 +339,25 @@ const MentorProfile = () => {
 
               <Button 
                 onClick={handleBookSession}
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-lg font-semibold hover:from-green-600 hover:to-green-700"
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-lg font-semibold hover:from-green-600 hover:to-green-700 mb-4"
               >
                 Book session for {selectedSession} 🚀
               </Button>
-            </section>
 
-            {/* Appreciate Button */}
-            <div className="text-center">
-              <Button 
-                onClick={handleAppreciate}
-                className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                  isAppreciated 
-                    ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white shadow-lg' 
-                    : 'bg-black text-white hover:bg-gray-800'
-                }`}
-              >
-                {isAppreciated ? '✨ Appreciated!' : 'Appreciate'}
-              </Button>
-            </div>
+              {/* Appreciate Button */}
+              <div className="text-center">
+                <Button 
+                  onClick={handleAppreciate}
+                  className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                    isAppreciated 
+                      ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white shadow-lg' 
+                      : 'bg-black text-white hover:bg-gray-800'
+                  }`}
+                >
+                  {isAppreciated ? '✨ Appreciated!' : 'Appreciate'}
+                </Button>
+              </div>
+            </section>
 
             {/* Similar Profiles */}
             <section className="bg-white rounded-xl shadow-lg p-6">
