@@ -25,12 +25,14 @@ const MentorProfile = () => {
     {
       name: "Sarah Johnson",
       rating: 5,
-      text: "Vikas provided excellent guidance on my portfolio. His feedback was actionable and helped me land my dream job!"
+      text: "Vikas provided excellent guidance on my portfolio. His feedback was actionable and helped me land my dream job!",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b1ad?w=40&h=40&fit=crop&crop=face"
     },
     {
       name: "Mike Chen",
       rating: 5,
-      text: "Amazing mentor! Really helped me understand design principles and gave great career advice."
+      text: "Amazing mentor! Really helped me understand design principles and gave great career advice.",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
     }
   ];
 
@@ -48,13 +50,47 @@ const MentorProfile = () => {
       name: "Priya Patel",
       role: "Senior UX Designer",
       sessions: "35+",
-      avatars: 4
+      avatars: 4,
+      photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=48&h=48&fit=crop&crop=face"
     },
     {
       name: "Raj Kumar",
       role: "Design Lead",
       sessions: "40+",
-      avatars: 5
+      avatars: 5,
+      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=48&h=48&fit=crop&crop=face"
+    }
+  ];
+
+  // Mini activity logs
+  const activityLogs = [
+    {
+      id: 1,
+      action: "Completed session with Alex",
+      time: "2 hours ago",
+      icon: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=24&h=24&fit=crop&crop=face",
+      type: "session"
+    },
+    {
+      id: 2,
+      action: "Updated portfolio review",
+      time: "5 hours ago",
+      icon: "📝",
+      type: "update"
+    },
+    {
+      id: 3,
+      action: "New 5-star review received",
+      time: "1 day ago",
+      icon: "⭐",
+      type: "review"
+    },
+    {
+      id: 4,
+      action: "Added new expertise: Figma",
+      time: "2 days ago",
+      icon: "🎨",
+      type: "skill"
     }
   ];
 
@@ -89,18 +125,24 @@ const MentorProfile = () => {
           onClick={() => handleSocialClick('GitHub')}
           className="group bg-white p-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-110 hover:rotate-6 animate-pulse hover:animate-none"
         >
-          <svg className="w-6 h-6 group-hover:text-gray-800 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-          </svg>
-          <div className="absolute -top-2 -right-2 w-3 h-3 bg-green-500 rounded-full animate-ping opacity-75"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=24&h=24&fit=crop" 
+            alt="GitHub" 
+            className="w-6 h-6 rounded-full group-hover:scale-110 transition-transform duration-300"
+          />
+          <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center animate-bounce">
+            <span className="text-white text-xs font-bold">✓</span>
+          </div>
         </div>
         <div 
           onClick={() => handleSocialClick('Dribbble')}
           className="group bg-white p-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-110 hover:-rotate-6"
         >
-          <svg className="w-6 h-6 group-hover:text-pink-600 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 0C5.374 0 0 5.374 0 12s5.374 12 12 12 12-5.374 12-12S18.626 0 12 0zm5.568 13.363c-.29.718-.687 1.312-1.196 1.789-.509.477-1.135.718-1.878.718-.743 0-1.369-.24-1.878-.718-.509-.477-.906-1.071-1.196-1.789-.29-.718-.435-1.551-.435-2.5s.145-1.782.435-2.5c.29-.718.687-1.312 1.196-1.789.509-.477 1.135-.718 1.878-.718.743 0 1.369.24 1.878.718.509.477.906 1.071 1.196 1.789.29.718.435 1.551.435 2.5s-.145 1.782-.435 2.5z"/>
-          </svg>
+          <img 
+            src="https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=24&h=24&fit=crop" 
+            alt="Dribbble" 
+            className="w-6 h-6 rounded-full group-hover:scale-110 transition-transform duration-300"
+          />
         </div>
       </div>
 
@@ -110,18 +152,22 @@ const MentorProfile = () => {
           onClick={() => handleSocialClick('LinkedIn')}
           className="group bg-white p-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-110 hover:rotate-12"
         >
-          <svg className="w-6 h-6 text-blue-600 group-hover:text-blue-800 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
+          <img 
+            src="https://images.unsplash.com/photo-1501286353178-1ec881214838?w=24&h=24&fit=crop" 
+            alt="LinkedIn" 
+            className="w-6 h-6 rounded-full group-hover:scale-110 transition-transform duration-300"
+          />
           <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
         </div>
         <div 
           onClick={() => handleSocialClick('Chat')}
           className="group bg-white p-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-110"
         >
-          <svg className="w-6 h-6 group-hover:text-green-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
+          <img 
+            src="https://images.unsplash.com/photo-1452378174528-3090a4bba7b2?w=24&h=24&fit=crop" 
+            alt="Chat" 
+            className="w-6 h-6 rounded-full group-hover:scale-110 transition-transform duration-300"
+          />
         </div>
         <div className="group bg-white p-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-110">
           <svg className="w-6 h-6 text-yellow-500 group-hover:text-yellow-600 transition-colors duration-300 group-hover:animate-spin" fill="currentColor" viewBox="0 0 24 24">
@@ -152,7 +198,11 @@ const MentorProfile = () => {
             </button>
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-violet-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">G</span>
+                <img 
+                  src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=32&h=32&fit=crop" 
+                  alt="Growbinar" 
+                  className="w-6 h-6 rounded"
+                />
               </div>
               <span className="font-semibold text-lg">Growbinar</span>
             </div>
@@ -177,7 +227,11 @@ const MentorProfile = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
+            <img 
+              src="https://images.unsplash.com/photo-1494790108755-2616b612b1ad?w=32&h=32&fit=crop&crop=face" 
+              alt="Profile" 
+              className="w-8 h-8 rounded-full"
+            />
           </div>
         </div>
       </nav>
@@ -236,6 +290,33 @@ const MentorProfile = () => {
           {/* Left Column - Main Content */}
           <div className="lg:col-span-2 space-y-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 animate-fade-in">Mentor Profile</h2>
+
+            {/* Mini Activity Logs */}
+            <section className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <h3 className="text-lg font-semibold text-violet-600 border-b-2 border-violet-600 pb-2 mb-4">Recent Activity</h3>
+              <div className="space-y-3">
+                {activityLogs.map((log) => (
+                  <div key={log.id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-violet-50 transition-colors duration-300">
+                    <div className="flex-shrink-0">
+                      {typeof log.icon === 'string' && log.icon.startsWith('http') ? (
+                        <img 
+                          src={log.icon} 
+                          alt="Activity" 
+                          className="w-6 h-6 rounded-full border border-gray-200"
+                        />
+                      ) : (
+                        <span className="text-lg">{log.icon}</span>
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-gray-800">{log.action}</p>
+                      <p className="text-xs text-gray-500">{log.time}</p>
+                    </div>
+                    <div className="w-2 h-2 bg-violet-400 rounded-full animate-pulse"></div>
+                  </div>
+                ))}
+              </div>
+            </section>
 
             {/* Overview */}
             <section className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
@@ -297,7 +378,11 @@ const MentorProfile = () => {
                   <div key={index} className="border-b border-gray-100 pb-4 last:border-b-0 hover:bg-gray-50 p-2 rounded-lg transition-colors duration-300">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-pulse"></div>
+                        <img 
+                          src={review.avatar} 
+                          alt={review.name} 
+                          className="w-10 h-10 rounded-full border border-gray-200"
+                        />
                         <span className="font-semibold text-gray-700">{review.name}</span>
                       </div>
                       <div className="flex gap-1">
@@ -384,7 +469,11 @@ const MentorProfile = () => {
                 {similarProfiles.map((profile, index) => (
                   <div key={index} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all duration-300 cursor-pointer transform hover:scale-105 hover:border-violet-300">
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full animate-pulse"></div>
+                      <img 
+                        src={profile.photo} 
+                        alt={profile.name} 
+                        className="w-12 h-12 rounded-full border border-gray-200"
+                      />
                       <div>
                         <h4 className="font-semibold text-sm hover:text-violet-600 transition-colors duration-300">{profile.name}</h4>
                         <p className="text-xs text-gray-600">{profile.role}</p>
@@ -394,11 +483,13 @@ const MentorProfile = () => {
                     <div className="flex items-center justify-between">
                       <div className="flex gap-1">
                         {[...Array(profile.avatars)].map((_, i) => (
-                          <div 
+                          <img 
                             key={i} 
-                            className="w-6 h-6 bg-gradient-to-r from-blue-400 to-green-400 rounded-full border-2 border-white -ml-1 first:ml-0 hover:scale-110 transition-transform duration-300" 
+                            src={`https://images.unsplash.com/photo-150${7 + i}003211169-0a1dd7228f2d?w=24&h=24&fit=crop&crop=face`}
+                            alt="Student"
+                            className="w-6 h-6 rounded-full border-2 border-white -ml-1 first:ml-0 hover:scale-110 transition-transform duration-300 shadow-sm" 
                             style={{ animationDelay: `${i * 0.1}s` }}
-                          ></div>
+                          />
                         ))}
                       </div>
                       <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded-full">{profile.sessions} Sessions</span>
