@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { Bell, Github, MessageCircle, Linkedin, Star, ArrowLeft, Search, User } from 'lucide-react';
 
 const MentorProfile = () => {
   const [selectedSession, setSelectedSession] = useState('06 May 2025');
@@ -62,7 +63,6 @@ const MentorProfile = () => {
     }
   ];
 
-  // Mini activity logs
   const activityLogs = [
     {
       id: 1,
@@ -118,91 +118,54 @@ const MentorProfile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Animated Left Sidebar - Sticky */}
+    <div className="min-h-screen bg-gray-50 relative">
+      {/* Fixed Top Icons */}
+      <div className="fixed top-4 right-4 z-50 flex gap-3">
+        <div className="bg-white p-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+          <Bell className="w-5 h-5 text-gray-600 hover:text-violet-600" />
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
+        </div>
+        <div className="bg-white p-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+          <MessageCircle className="w-5 h-5 text-gray-600 hover:text-blue-600" />
+        </div>
+        <div className="bg-white p-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+          <User className="w-5 h-5 text-gray-600 hover:text-green-600" />
+        </div>
+      </div>
+
+      {/* Fixed Left Side Social Icons */}
       <div className="fixed left-4 top-1/2 transform -translate-y-1/2 z-50 flex flex-col gap-4">
         <div 
           onClick={() => handleSocialClick('GitHub')}
-          className="group bg-white p-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-110 hover:rotate-6 animate-pulse hover:animate-none"
+          className="bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-110"
         >
-          <img 
-            src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=24&h=24&fit=crop" 
-            alt="GitHub" 
-            className="w-6 h-6 rounded-full group-hover:scale-110 transition-transform duration-300"
-          />
-          <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center animate-bounce">
-            <span className="text-white text-xs font-bold">✓</span>
-          </div>
+          <Github className="w-6 h-6 text-gray-700 hover:text-black" />
         </div>
-        <div 
-          onClick={() => handleSocialClick('Dribbble')}
-          className="group bg-white p-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-110 hover:-rotate-6"
-        >
-          <img 
-            src="https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=24&h=24&fit=crop" 
-            alt="Dribbble" 
-            className="w-6 h-6 rounded-full group-hover:scale-110 transition-transform duration-300"
-          />
-        </div>
-      </div>
-
-      {/* Animated Right Sidebar - Sticky */}
-      <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50 flex flex-col gap-4">
         <div 
           onClick={() => handleSocialClick('LinkedIn')}
-          className="group bg-white p-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-110 hover:rotate-12"
+          className="bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-110"
         >
-          <img 
-            src="https://images.unsplash.com/photo-1501286353178-1ec881214838?w=24&h=24&fit=crop" 
-            alt="LinkedIn" 
-            className="w-6 h-6 rounded-full group-hover:scale-110 transition-transform duration-300"
-          />
-          <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
+          <Linkedin className="w-6 h-6 text-blue-600 hover:text-blue-700" />
         </div>
         <div 
-          onClick={() => handleSocialClick('Chat')}
-          className="group bg-white p-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-110"
+          onClick={() => handleSocialClick('Star')}
+          className="bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-110"
         >
-          <img 
-            src="https://images.unsplash.com/photo-1452378174528-3090a4bba7b2?w=24&h=24&fit=crop" 
-            alt="Chat" 
-            className="w-6 h-6 rounded-full group-hover:scale-110 transition-transform duration-300"
-          />
+          <Star className="w-6 h-6 text-yellow-500 hover:text-yellow-600" />
         </div>
-        <div className="group bg-white p-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-110">
-          <svg className="w-6 h-6 text-yellow-500 group-hover:text-yellow-600 transition-colors duration-300 group-hover:animate-spin" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 0l3.708 7.511 8.292 1.206-6 5.846 1.416 8.261L12 18.511l-7.416 4.313L6 14.563 0 8.717l8.292-1.206L12 0z"/>
-          </svg>
-        </div>
-        <Button 
-          onClick={handleAppreciate}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
-            isAppreciated 
-              ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white shadow-lg animate-pulse' 
-              : 'bg-black text-white hover:bg-gray-800'
-          }`}
-        >
-          {isAppreciated ? '✨ Appreciated!' : 'Appreciate'}
-        </Button>
       </div>
 
       {/* Top Navigation */}
-      <nav className="bg-white/95 backdrop-blur-sm shadow-sm border-b px-6 py-4 sticky top-0 z-40">
+      <nav className="bg-white shadow-sm border-b px-6 py-4 sticky top-0 z-40">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-6">
             <button className="flex items-center gap-2 text-gray-600 hover:text-gray-800">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5-5m0 0l-5 5m5-5V3" />
-              </svg>
+              <ArrowLeft className="w-5 h-5" />
               Back
             </button>
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-violet-600 rounded-lg flex items-center justify-center">
-                <img 
-                  src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=32&h=32&fit=crop" 
-                  alt="Growbinar" 
-                  className="w-6 h-6 rounded"
-                />
+                <span className="text-white font-bold text-sm">G</span>
               </div>
               <span className="font-semibold text-lg">Growbinar</span>
             </div>
@@ -215,18 +178,11 @@ const MentorProfile = () => {
                 placeholder="Search mentors..."
                 className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"
               />
-              <svg className="absolute right-3 top-2.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+              <Search className="absolute right-3 top-2.5 w-5 h-5 text-gray-400" />
             </div>
           </div>
 
           <div className="flex items-center gap-4">
-            <button className="p-2 text-gray-600 hover:text-gray-800">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
             <img 
               src="https://images.unsplash.com/photo-1494790108755-2616b612b1ad?w=32&h=32&fit=crop&crop=face" 
               alt="Profile" 
@@ -236,47 +192,39 @@ const MentorProfile = () => {
         </div>
       </nav>
 
-      {/* Hero Section with Background */}
+      {/* Hero Section */}
       <div className="relative h-64 bg-gradient-to-r from-violet-600 to-purple-700 overflow-hidden">
         <img 
           src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=1200&h=300&fit=crop" 
           alt="Background" 
-          className="w-full h-full object-cover opacity-30 transition-transform duration-700 hover:scale-105"
+          className="w-full h-full object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-violet-600/80 to-purple-700/80"></div>
-        <div className="absolute top-4 right-4">
-          <div className="w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
-        </div>
       </div>
 
       {/* Profile Section */}
       <div className="relative px-6 pb-8">
         <div className="flex flex-col items-center -mt-16">
-          <div className="relative group">
-            <img
-              src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=150&h=150&fit=crop&crop=face"
-              alt={mentor.name}
-              className="w-32 h-32 rounded-full border-4 border-white shadow-lg mb-4 transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105"
-            />
-            <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center animate-bounce">
-              <span className="text-white text-xs font-bold">✓</span>
-            </div>
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2 animate-fade-in">{mentor.name}</h1>
-          <p className="text-lg text-gray-600 mb-4 animate-fade-in">{mentor.role}</p>
+          <img
+            src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=150&h=150&fit=crop&crop=face"
+            alt={mentor.name}
+            className="w-32 h-32 rounded-full border-4 border-white shadow-lg mb-4"
+          />
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">{mentor.name}</h1>
+          <p className="text-lg text-gray-600 mb-4">{mentor.role}</p>
           
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 mb-6 animate-fade-in">
-            <span className="hover:text-violet-600 transition-colors cursor-pointer">📍 {mentor.location}</span>
-            <span className="hover:text-violet-600 transition-colors cursor-pointer">🗣️ {mentor.languages.join(', ')}</span>
-            <span className="hover:text-violet-600 transition-colors cursor-pointer">⏱️ {mentor.experience}</span>
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 mb-6">
+            <span>📍 {mentor.location}</span>
+            <span>🗣️ {mentor.languages.join(', ')}</span>
+            <span>⏱️ {mentor.experience}</span>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+          <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
             <p className="text-sm text-gray-600 mb-2">Next Available Session</p>
             <p className="font-semibold text-gray-900 mb-4">{mentor.nextSession}</p>
             <Button 
               onClick={handleBookSession}
-              className="w-full bg-gradient-to-r from-violet-600 to-purple-700 text-white py-3 rounded-lg font-semibold hover:from-violet-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              className="w-full bg-gradient-to-r from-violet-600 to-purple-700 text-white py-3 rounded-lg font-semibold hover:from-violet-700 hover:to-purple-800"
             >
               Book Session ✨
             </Button>
@@ -284,19 +232,19 @@ const MentorProfile = () => {
         </div>
       </div>
 
-      {/* Main Content Grid */}
+      {/* Main Content Grid - Equal Width */}
       <div className="px-6 pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Column - Main Content */}
-          <div className="lg:col-span-2 space-y-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 animate-fade-in">Mentor Profile</h2>
+          <div className="space-y-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Mentor Profile</h2>
 
-            {/* Mini Activity Logs */}
-            <section className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            {/* Activity Logs */}
+            <section className="bg-white rounded-xl shadow-lg p-6">
               <h3 className="text-lg font-semibold text-violet-600 border-b-2 border-violet-600 pb-2 mb-4">Recent Activity</h3>
               <div className="space-y-3">
                 {activityLogs.map((log) => (
-                  <div key={log.id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-violet-50 transition-colors duration-300">
+                  <div key={log.id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-violet-50">
                     <div className="flex-shrink-0">
                       {typeof log.icon === 'string' && log.icon.startsWith('http') ? (
                         <img 
@@ -312,26 +260,25 @@ const MentorProfile = () => {
                       <p className="text-sm font-medium text-gray-800">{log.action}</p>
                       <p className="text-xs text-gray-500">{log.time}</p>
                     </div>
-                    <div className="w-2 h-2 bg-violet-400 rounded-full animate-pulse"></div>
                   </div>
                 ))}
               </div>
             </section>
 
             {/* Overview */}
-            <section className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <section className="bg-white rounded-xl shadow-lg p-6">
               <h3 className="text-lg font-semibold text-violet-600 border-b-2 border-violet-600 pb-2 mb-4">Overview</h3>
               <p className="text-gray-700 leading-relaxed">{mentor.bio}</p>
             </section>
 
             {/* Background */}
-            <section className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <section className="bg-white rounded-xl shadow-lg p-6">
               <h3 className="text-lg font-semibold text-violet-600 mb-6">Background</h3>
               
               <div className="space-y-6">
-                <div className="group">
+                <div>
                   <span className="font-semibold text-gray-700">Mentored:</span>
-                  <span className="ml-2 bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold group-hover:bg-red-200 transition-colors cursor-pointer">
+                  <span className="ml-2 bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">
                     {mentor.sessions} Sessions ⚡
                   </span>
                 </div>
@@ -342,7 +289,7 @@ const MentorProfile = () => {
                     {mentor.expertise.map((skill, index) => (
                       <span 
                         key={index} 
-                        className="bg-violet-100 text-violet-800 px-3 py-1 rounded-full text-sm hover:bg-violet-200 transition-all duration-300 cursor-pointer transform hover:scale-105"
+                        className="bg-violet-100 text-violet-800 px-3 py-1 rounded-full text-sm hover:bg-violet-200"
                       >
                         {skill}
                       </span>
@@ -356,7 +303,7 @@ const MentorProfile = () => {
                     {mentor.languages.map((language, index) => (
                       <span 
                         key={index} 
-                        className="border border-gray-800 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-gray-100 transition-all duration-300 cursor-pointer transform hover:scale-105"
+                        className="border border-gray-800 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-gray-100"
                       >
                         {language}
                       </span>
@@ -367,15 +314,15 @@ const MentorProfile = () => {
             </section>
 
             {/* Reviews */}
-            <section className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <section className="bg-white rounded-xl shadow-lg p-6">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-lg font-semibold text-violet-600 border-b-2 border-violet-600 pb-2">Reviews</h3>
-                <button className="text-violet-600 hover:text-violet-800 text-sm font-medium hover:underline transition-all duration-300">View All &gt;</button>
+                <button className="text-violet-600 hover:text-violet-800 text-sm font-medium hover:underline">View All &gt;</button>
               </div>
               
               <div className="space-y-4">
                 {reviews.map((review, index) => (
-                  <div key={index} className="border-b border-gray-100 pb-4 last:border-b-0 hover:bg-gray-50 p-2 rounded-lg transition-colors duration-300">
+                  <div key={index} className="border-b border-gray-100 pb-4 last:border-b-0 hover:bg-gray-50 p-2 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-3">
                         <img 
@@ -387,7 +334,7 @@ const MentorProfile = () => {
                       </div>
                       <div className="flex gap-1">
                         {[...Array(review.rating)].map((_, i) => (
-                          <span key={i} className="text-yellow-400 animate-pulse" style={{ animationDelay: `${i * 0.1}s` }}>⭐</span>
+                          <span key={i} className="text-yellow-400">⭐</span>
                         ))}
                       </div>
                     </div>
@@ -398,10 +345,10 @@ const MentorProfile = () => {
             </section>
           </div>
 
-          {/* Right Column */}
+          {/* Right Column - Equal Width */}
           <div className="space-y-6">
             {/* Available Sessions */}
-            <section className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <section className="bg-white rounded-xl shadow-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Available Sessions</h3>
               <p className="text-sm text-gray-600 mb-4">Book 1-1 sessions from the below options</p>
               
@@ -409,39 +356,36 @@ const MentorProfile = () => {
                 {availableSessions.map((session, index) => (
                   <div 
                     key={index} 
-                    className={`p-3 rounded-lg border text-center cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+                    className={`p-3 rounded-lg border text-center cursor-pointer transition-all duration-300 ${
                       session.slots === '0/3' 
                         ? 'border-gray-200 bg-gray-50 text-gray-400' 
-                        : 'border-violet-200 bg-violet-50 hover:bg-violet-100 hover:shadow-md'
+                        : 'border-violet-200 bg-violet-50 hover:bg-violet-100'
                     }`}
                     onClick={() => session.slots !== '0/3' && setSelectedSession(`${session.date} May 2025`)}
                   >
                     <div className="font-semibold text-sm">{session.day}</div>
                     <div className="text-xs text-gray-600">{session.date}</div>
                     <div className="text-xs mt-1">{session.slots}</div>
-                    {session.slots !== '0/3' && (
-                      <div className="w-2 h-2 bg-green-400 rounded-full mx-auto mt-1 animate-pulse"></div>
-                    )}
                   </div>
                 ))}
               </div>
 
-              <button className="text-violet-600 hover:text-violet-800 text-sm font-medium mb-4 hover:underline transition-all duration-300">View All &gt;</button>
+              <button className="text-violet-600 hover:text-violet-800 text-sm font-medium mb-4 hover:underline">View All &gt;</button>
 
               <div className="mb-4">
                 <h4 className="font-semibold text-gray-900 mb-3">Available Time Slots</h4>
                 <div className="space-y-2">
                   {timeSlots.map((time, index) => (
-                    <label key={index} className="flex items-center gap-3 cursor-pointer group hover:bg-violet-50 p-2 rounded-lg transition-colors duration-300">
+                    <label key={index} className="flex items-center gap-3 cursor-pointer hover:bg-violet-50 p-2 rounded-lg">
                       <input
                         type="radio"
                         name="timeSlot"
                         value={time}
                         checked={selectedTimeSlot === time}
                         onChange={(e) => setSelectedTimeSlot(e.target.value)}
-                        className="w-4 h-4 text-violet-600 focus:ring-violet-500 transition-all duration-300"
+                        className="w-4 h-4 text-violet-600 focus:ring-violet-500"
                       />
-                      <span className="text-sm group-hover:text-violet-700 transition-colors duration-300">{time}</span>
+                      <span className="text-sm">{time}</span>
                       {selectedTimeSlot === time && (
                         <span className="ml-auto text-violet-600">✓</span>
                       )}
@@ -452,22 +396,36 @@ const MentorProfile = () => {
 
               <Button 
                 onClick={handleBookSession}
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-lg font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-lg font-semibold hover:from-green-600 hover:to-green-700"
               >
                 Book session for {selectedSession} 🚀
               </Button>
             </section>
 
+            {/* Appreciate Button */}
+            <div className="text-center">
+              <Button 
+                onClick={handleAppreciate}
+                className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                  isAppreciated 
+                    ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white shadow-lg' 
+                    : 'bg-black text-white hover:bg-gray-800'
+                }`}
+              >
+                {isAppreciated ? '✨ Appreciated!' : 'Appreciate'}
+              </Button>
+            </div>
+
             {/* Similar Profiles */}
-            <section className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <section className="bg-white rounded-xl shadow-lg p-6">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold text-gray-900">Similar Profiles</h3>
-                <button className="text-violet-600 hover:text-violet-800 text-sm font-medium hover:underline transition-all duration-300">Browse Mentors &gt;</button>
+                <button className="text-violet-600 hover:text-violet-800 text-sm font-medium hover:underline">Browse Mentors &gt;</button>
               </div>
               
               <div className="space-y-4">
                 {similarProfiles.map((profile, index) => (
-                  <div key={index} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all duration-300 cursor-pointer transform hover:scale-105 hover:border-violet-300">
+                  <div key={index} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all duration-300 cursor-pointer">
                     <div className="flex items-center gap-3 mb-2">
                       <img 
                         src={profile.photo} 
@@ -475,7 +433,7 @@ const MentorProfile = () => {
                         className="w-12 h-12 rounded-full border border-gray-200"
                       />
                       <div>
-                        <h4 className="font-semibold text-sm hover:text-violet-600 transition-colors duration-300">{profile.name}</h4>
+                        <h4 className="font-semibold text-sm hover:text-violet-600">{profile.name}</h4>
                         <p className="text-xs text-gray-600">{profile.role}</p>
                       </div>
                     </div>
@@ -487,8 +445,7 @@ const MentorProfile = () => {
                             key={i} 
                             src={`https://images.unsplash.com/photo-150${7 + i}003211169-0a1dd7228f2d?w=24&h=24&fit=crop&crop=face`}
                             alt="Student"
-                            className="w-6 h-6 rounded-full border-2 border-white -ml-1 first:ml-0 hover:scale-110 transition-transform duration-300 shadow-sm" 
-                            style={{ animationDelay: `${i * 0.1}s` }}
+                            className="w-6 h-6 rounded-full border-2 border-white -ml-1 first:ml-0 shadow-sm" 
                           />
                         ))}
                       </div>
